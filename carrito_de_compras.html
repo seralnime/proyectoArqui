@@ -1,0 +1,85 @@
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+
+  <link rel="stylesheet" href="carrito.css">
+
+</head>
+
+<body>
+  <h1>MENU MEXICAN</h1>
+
+
+  <div class="tabla-calculo" id="tabla-calculo">
+    <table class="tabla">
+      <caption class="titulo-tabla">Carrito de compras</caption>
+      <thead class="cabecera border-top-right">
+        <tr>
+          <th class="border-top-left">Nombre Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unidad</th>
+          <th class="border-top-right">Precio Total</th>
+        </tr>
+      </thead>
+      <tbody id="carrito-body">
+
+      </tbody>
+      <tfoot id="footer">
+        <tr>
+          <td class="border-bottom-left border-bottom-right" colspan=4>¡No hay ningun elemento en el carrito!</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <a id="boton_compra" href="usuario copy.html" class="btn btn-primary">COMPRAR</a>
+
+  <!-- TEMPLATE FILAS -->
+  <template id="agregar-producto-al-carro">
+    <tr>
+      <td id="producto">Flautas Mixtas</td>
+      <td><button id="menos-cantidad" class="button">-</button><span id="cant">1</span><button id='mas-cantidad'
+          class="button">+</button></td>
+      <td class="precio-tabla" id="precio-uni">23600</td>
+      <td class="precio-tabla" id="precio-total-prod">23600</td>
+    </tr>
+  </template>
+  <!-- TEMPLATE FOOTER TABLA -->
+  <template id="tfooter">
+    <tr class="none">
+      <td class="border-bottom-left"><button id="comprar" class="button">Comprar</button></td>
+      <td><button id="vaciar-tabla" class="button">Vaciar carrito</button></td>
+      <td class="negrita">Precio Total</td>
+      <td id="total-a-pagar" class="precio-tabla border-bottom-right negrita">23200</td>
+    </tr>
+  </template>
+  <div class="contenedor-productos">
+
+  </div>
+  <!-- TEMPLATE PRODUCTO -->
+  <template id="template-prod">
+    <article class="cartola">
+      <!-- IMAGEN PRODUCTO -->
+      <div class="contenedor-img">
+        <img src="" alt="">
+      </div>
+      <!-- NOMBRE Y DESCRIPCION PRODUCTO -->
+      <div class="div-info">
+        <h2 class="nombre-prod">Nombre Producto</h2>
+        <hr class="separador">
+        <p class="descripcion-prod">Descripción producto</p>
+      </div>
+      <!--PRECIO Y AGREGAR AL CARRITO -->
+      <div class="div-precio-boton">
+        <p class="precio">precio Producto</p>
+        <button class="boton">Agregar</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="carrito.js"></script>
+</body>
+
+</html>
