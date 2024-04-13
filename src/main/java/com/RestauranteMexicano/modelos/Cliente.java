@@ -11,14 +11,15 @@ public class Cliente {
     private String nombre;
     private long ID;
     private String Licencia;
-
+    private String Direccion;
     public Cliente(){
 
     }
-    public Cliente(String nombre, long ID, String Licencia){
+    public Cliente(String nombre, long ID, String Licencia, String Direccion){
         this.nombre = nombre;
         this.ID = ID;
         this.Licencia = Licencia;
+        this.Direccion = Direccion;
     }
 
     public String getNombre(){
@@ -38,5 +39,12 @@ public class Cliente {
     }
     public void setLicencia(String Lic){
         this.Licencia = Lic;
+    }
+
+    public String getDireccion() {
+        return Direccion;
+    }
+    public void setDireccion(String direccion) {
+        Direccion = direccion;
     }
 }

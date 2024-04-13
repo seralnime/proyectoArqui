@@ -11,17 +11,22 @@ import java.util.List;
 public class Producto {
     private String Nombre;
     private String Descripcion;
+    private int Cantidad;
+
     private float Precio;
     private List<String> Ingredientes;
-    
+    private boolean TieneDescuento;
+
     public Producto() {
     }
 
-    public Producto(String nombre, String descripcion, float precio, List<String> ingredientes) {
+    public Producto(String nombre, String descripcion, int Cantidad, float precio, List<String> ingredientes, boolean TieneDescuento) {
         this.Nombre = nombre;
         this.Descripcion = descripcion;
+        this.Cantidad = Cantidad;
         this.Precio = precio;
         this.Ingredientes = ingredientes;
+        this.TieneDescuento = TieneDescuento;
     }
 
     public String getNombre() {
@@ -30,6 +35,14 @@ public class Producto {
 
     public String getDescripcion() {
         return this.Descripcion;
+    }
+
+    public int getCantidad() {
+        return this.Cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.Cantidad = cantidad;
     }
 
     public float getPrecio() {
@@ -54,6 +67,14 @@ public class Producto {
 
     public void setIngredientes(List<String> ingredientes) {
         this.Ingredientes = ingredientes;
+    }
+    
+    public boolean TieneDescuento() {
+        return TieneDescuento;
+    }
+
+    public void setTieneDescuento(boolean tieneDescuento) {
+        TieneDescuento = tieneDescuento;
     }
 }
 
