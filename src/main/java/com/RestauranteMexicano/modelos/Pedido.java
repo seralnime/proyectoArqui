@@ -12,19 +12,29 @@ public class Pedido {
     private List<Producto> productos; 
     private float total;
     private boolean PagoHecho;
+    private float tarifaDomicilio;
     
-    public Pedido(Cliente cliente, List<Producto> productos) {
+    public Pedido(Cliente cliente, List<Producto> productos,boolean esPremium) {
+        if(!esPremium){
+            this.tarifaDomicilio = 3500;
+        }else{
+            this.tarifaDomicilio = 0;
+        }
         this.cliente = cliente;
         this.productos = productos;
-        calculaPago();
+        this.calculaPago(esPremium);
     }
-    public void calculaPago(){
-        float total = 0;
+    public void calculaPago(boolean esPremium){
+        float totalP = 0;
         for(Producto producto : this.productos){
-            total += producto.getPrecio()*producto.getCantidad();
+            totalP += producto.getPrecio()*producto.getCantidad();
         }
-        this.total = total;
+        totalP += this.tarifaDomicilio;
+        this.setTotal(totalP); 
     }
+
+
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -42,6 +52,12 @@ public class Pedido {
     }
     public void setTotal(float total) {
         this.total = total;
+    }
+    public float getTarifa() {
+        return this.tarifaDomicilio;
+    }
+    public void setTarifa(float tarifa) {
+        this.tarifaDomicilio = tarifa;
     }
     public boolean isPagoHecho() {
         return PagoHecho;

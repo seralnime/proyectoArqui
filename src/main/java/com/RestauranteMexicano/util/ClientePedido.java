@@ -1,5 +1,10 @@
 package main.java.com.RestauranteMexicano.util;
 
+import java.util.List;
+
+import main.java.com.RestauranteMexicano.modelos.Pedido;
+import main.java.com.RestauranteMexicano.modelos.Producto;
+
 /**
     Santiago Sánchez Cárdenas
     Sergio Gabriel Nieto Meneses
@@ -7,7 +12,7 @@ package main.java.com.RestauranteMexicano.util;
  */
 
 public interface ClientePedido {
-    void HacePedido(boolean esPremium);
-    void TraeInventario(boolean esPremium);
+    Pedido HacePedido(List<Producto> productos);
+    void TraeInventario();
 }
     
