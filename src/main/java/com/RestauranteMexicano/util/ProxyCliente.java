@@ -1,5 +1,11 @@
 package main.java.com.RestauranteMexicano.util;
 
+/**
+    Santiago Sánchez Cárdenas
+    Sergio Gabriel Nieto Meneses
+    Mauricio Andres Valderrama Acosta
+ */
+
 import main.java.com.RestauranteMexicano.modelos.Cliente;
 
 public class ProxyCliente implements ClientePedido{

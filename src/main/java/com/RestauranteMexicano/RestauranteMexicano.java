@@ -1,9 +1,9 @@
 package main.java.com.RestauranteMexicano;
 
 /**
-    Santiago 
-    Sergio
-    Mauricio
+    Santiago Sánchez Cárdenas
+    Sergio Gabriel Nieto Meneses
+    Mauricio Andres Valderrama Acosta
  */
 
 public class RestauranteMexicano{
