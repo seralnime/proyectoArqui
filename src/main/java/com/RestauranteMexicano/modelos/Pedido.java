@@ -8,17 +8,22 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.RestauranteMexicano.JavaMappers.ProductoMapper;
+
 /**
-    Santiago Sánchez Cárdenas
-    Sergio Gabriel Nieto Meneses
-    Mauricio Andres Valderrama Acosta
+ * Santiago Sánchez Cárdenas
+ * Sergio Gabriel Nieto Meneses
+ * Mauricio Andres Valderrama Acosta
  */
 
 
 public class Pedido {
     private int ID;
     private Cliente cliente;
-    private List<Producto> productos; 
+    private List<Producto> productos;
     private float total;
     private boolean PagoHecho;
     private float tarifaDomicilio;
@@ -29,7 +34,7 @@ public class Pedido {
         this.ID = ID;
         if(!esPremium){
             this.tarifaDomicilio = 3500;
-        }else{
+        } else {
             this.tarifaDomicilio = 0;
         }
         this.cliente = cliente;
@@ -41,11 +46,11 @@ public class Pedido {
     }
     public void calculaPago(boolean esPremium){
         float totalP = 0;
-        for(Producto producto : this.productos){
-            totalP += producto.getPrecio()*producto.getCantidad();
+        for (Producto producto : this.productos) {
+            totalP += producto.getPrecio() * producto.getCantidad();
         }
         totalP += this.tarifaDomicilio;
-        this.setTotal(totalP); 
+        this.setTotal(totalP);
     }
     public List<Producto> TraeInventario(boolean esPremium, SqlSessionFactory session){
         SqlSession sqlss = session.openSession();
@@ -75,33 +80,41 @@ public class Pedido {
     public Cliente getCliente() {
         return this.cliente;
     }
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
     public List<Producto> getProductos() {
         return this.productos;
     }
+
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
+
     public float getTotal() {
         return this.total;
     }
+
     public void setTotal(float total) {
         this.total = total;
     }
+
     public float getTarifa() {
         return this.tarifaDomicilio;
     }
+
     public void setTarifa(float tarifa) {
         this.tarifaDomicilio = tarifa;
     }
+
     public boolean isPagoHecho() {
         return this.PagoHecho;
     }
+
     public void setPagoHecho(boolean pagoHecho) {
         this.PagoHecho = pagoHecho;
     }
 
-    
 }
