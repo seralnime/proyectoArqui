@@ -1,8 +1,8 @@
-package src.main.java.com.RestauranteMexicano.adaptor;
+package com.RestauranteMexicano.adaptor;
 
 import java.util.List;
 
-import src.main.java.com.RestauranteMexicano.modelos.*;
+import com.RestauranteMexicano.modelos.*;
 
 public class adaptadordeapp<pedido> implements app {
 
