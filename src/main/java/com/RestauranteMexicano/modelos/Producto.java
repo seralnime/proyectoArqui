@@ -1,6 +1,5 @@
-package main.java.com.RestauranteMexicano.modelos;
+package com.RestauranteMexicano.modelos;
 
-import java.util.List;
 
 /**
  * Santiago Sánchez Cárdenas
@@ -15,14 +14,13 @@ public class Producto {
     private int Cantidad;
 
     private float Precio;
-    private List<String> Ingredientes;
+    private String Ingredientes;
     private boolean TieneDescuento;
 
     public Producto() {
     }
 
-    public Producto(int id, String nombre, String descripcion, int Cantidad, float precio, List<String> ingredientes,
-            boolean TieneDescuento) {
+    public Producto(int id, String nombre, String descripcion, int Cantidad, float precio, String ingredientes, boolean TieneDescuento) {
         this.Id = id;
         this.Nombre = nombre;
         this.Descripcion = descripcion;
@@ -52,7 +50,7 @@ public class Producto {
         return this.Precio;
     }
 
-    public List<String> getIngredientes() {
+    public String getIngredientes() {
         return this.Ingredientes;
     }
 
@@ -80,7 +78,7 @@ public class Producto {
         this.Precio = precio;
     }
 
-    public void setIngredientes(List<String> ingredientes) {
+    public void setIngredientes(String ingredientes) {
         this.Ingredientes = ingredientes;
     }
 

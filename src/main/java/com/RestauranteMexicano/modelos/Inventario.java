@@ -1,4 +1,4 @@
-package main.java.com.RestauranteMexicano.modelos;
+package com.RestauranteMexicano.modelos;
 
 import java.util.List;
 

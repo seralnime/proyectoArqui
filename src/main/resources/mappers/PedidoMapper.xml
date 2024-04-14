@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--
+/**
+    Santiago Sánchez Cárdenas
+    Sergio Gabriel Nieto Meneses
+    Mauricio Andres Valderrama Acosta
+ */ -->
+  
+<mapper namespace="com.RestauranteMexicano.JavaMappers.PedidoMapper">
+
+    <select id="consultarPedido" parameterType="int" resultMap="PedidoResult">
+        SELECT * FROM T_PEDIDOS WHERE ID = #{id}
+    </select>
+
+    <select id="consultarPedidos" resultMap="PedidoResult">
+        SELECT * FROM T_PEDIDOS
+    </select>
+
+    <insert id="insertarPedido" parameterType="Pedido">
+        INSERT INTO T_PEDIDOS (ClienteID, total, PagoHecho, tarifaDomicilio) 
+        VALUES (#{cliente.ID}, #{total}, #{pagoHecho}, #{tarifaDomicilio})
+    </insert>
+
+    <resultMap type='Pedido' id='PedidoResult'>
+        <id property='ID' column='ID'/>
+        <result property='cliente' column='ClienteID' javaType='Cliente' select='com.RestauranteMexicano.JavaMappers.ClienteMapper.consultarCliente'/>
+        <collection property='productos' ofType='Producto' select='com.RestauranteMexicano.JavaMappers.ProductoMapper.consultarProductosPorPedido'/>
+        <result property='total' column='total'/>
+        <result property='PagoHecho' column='PagoHecho'/>
+        <result property='tarifaDomicilio' column='tarifaDomicilio'/>
+    </resultMap>
+</mapper>

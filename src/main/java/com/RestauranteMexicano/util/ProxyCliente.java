@@ -1,6 +1,12 @@
-package main.java.com.RestauranteMexicano.util;
+package com.RestauranteMexicano.util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 /**
     Santiago Sánchez Cárdenas
@@ -8,13 +14,28 @@ import java.util.List;
     Mauricio Andres Valderrama Acosta
  */
 
-import main.java.com.RestauranteMexicano.modelos.Cliente;
-import main.java.com.RestauranteMexicano.modelos.Pedido;
-import main.java.com.RestauranteMexicano.modelos.Producto;
+import com.RestauranteMexicano.modelos.Cliente;
+import com.RestauranteMexicano.modelos.Pedido;
+import com.RestauranteMexicano.modelos.Producto;
 
 public class ProxyCliente implements ClientePedido{
     private Cliente cliente;
     private boolean esPremium;
+
+    public static SqlSessionFactory getSqlSessionFactory() {
+        SqlSessionFactory sqlSessionFactory = null;
+        if (sqlSessionFactory == null) {
+            InputStream inputStream;
+            try {
+                inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            } catch (IOException e) {
+                throw new RuntimeException(e.getCause());
+            }
+        }
+        return sqlSessionFactory;
+    }
+    
 
     public ProxyCliente(Cliente cliente){
         this.cliente = cliente;
@@ -25,8 +46,9 @@ public class ProxyCliente implements ClientePedido{
         return true; //Hay que cambiar esto cuando se implemente persistencia de datos
     }
     public void TraeInventario(){
+        SqlSessionFactory session = getSqlSessionFactory();
         Pedido p = new Pedido();
-        List<Producto> ProductosDisponibles = p.TraeInventario(esPremium);
+        List<Producto> ProductosDisponibles = p.TraeInventario(esPremium, session);
         if(!ProductosDisponibles.isEmpty()){
             System.out.println("--------------------------------------");
             System.out.println("Listado de productos disponibles:");
@@ -42,7 +64,7 @@ public class ProxyCliente implements ClientePedido{
     }
     @Override
     public Pedido HacePedido(List<Producto> productos) {
-        Pedido pedido = new Pedido(cliente, productos, esPremium);
+        Pedido pedido = new Pedido(1,cliente, productos, esPremium);//con la persistencia se elimina el id y se deja autoincrement
         return pedido;
     }
 }
