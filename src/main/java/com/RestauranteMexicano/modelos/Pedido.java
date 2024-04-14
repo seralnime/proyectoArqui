@@ -57,19 +57,19 @@ public class Pedido {
 
 
     public Cliente getCliente() {
-        return cliente;
+        return this.cliente;
     }
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
     public List<Producto> getProductos() {
-        return productos;
+        return this.productos;
     }
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
     public float getTotal() {
-        return total;
+        return this.total;
     }
     public void setTotal(float total) {
         this.total = total;
@@ -81,10 +81,10 @@ public class Pedido {
         this.tarifaDomicilio = tarifa;
     }
     public boolean isPagoHecho() {
-        return PagoHecho;
+        return this.PagoHecho;
     }
     public void setPagoHecho(boolean pagoHecho) {
-        PagoHecho = pagoHecho;
+        this.PagoHecho = pagoHecho;
     }
 
     
