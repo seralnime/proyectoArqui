@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--
+/**
+    Santiago Sánchez Cárdenas
+    Sergio Gabriel Nieto Meneses
+    Mauricio Andres Valderrama Acosta
+ */ -->
+  
+<mapper namespace="com.RestauranteMexicano.mappers.ProductoMapper">
+
+    <select id="consultarProducto" parameterType="int" resultMap="ProductoResult">
+        SELECT id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento
+        FROM Prodcto 
+        WHERE id = #{id}
+    </select>
+
+    <select id="consultarProductos" resultMap="ProductoResult">
+        SELECT id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento
+        FROM Prodcto
+    </select>
+<insert id="insertarProducto" parameterType="Producto">
+        INSERT INTO Prodcto (id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento)
+        VALUES (#{id}, #{nombre}, #{descripcion}, #{Cantidad}, #{precio}, #{Ingredientes}, #{TieneDescuento})
+</insert>
+
+<resultMap type='ProductoMapper' id='ProductoResult'>
+    <id property='id' column='id'/>
+    <result property='nombre' column='nombre'/>
+    <result property='descripcion' column='descripcion'/>   
+    <result property='Cantidad' column='Cantidad'/>  
+    <result property='precio' column='precio'/> 
+    <result property='Ingredientes' column='Ingredientes'/>
+    <result property='TieneDescuento' column='TieneDescuento'/>
+</resultMap>
+    
+    
+</mapper>

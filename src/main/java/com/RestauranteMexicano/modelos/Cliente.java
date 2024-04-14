@@ -12,6 +12,8 @@ public class Cliente {
     private long ID;
     private String Licencia;
     private String Direccion;
+
+    
     public Cliente(){
 
     }

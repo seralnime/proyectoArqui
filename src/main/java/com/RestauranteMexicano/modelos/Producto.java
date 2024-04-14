@@ -3,12 +3,13 @@ package main.java.com.RestauranteMexicano.modelos;
 import java.util.List;
 
 /**
-    Santiago Sánchez Cárdenas
-    Sergio Gabriel Nieto Meneses
-    Mauricio Andres Valderrama Acosta
+ * Santiago Sánchez Cárdenas
+ * Sergio Gabriel Nieto Meneses
+ * Mauricio Andres Valderrama Acosta
  */
 
 public class Producto {
+    private int Id;
     private String Nombre;
     private String Descripcion;
     private int Cantidad;
@@ -20,13 +21,19 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, String descripcion, int Cantidad, float precio, List<String> ingredientes, boolean TieneDescuento) {
+    public Producto(int id, String nombre, String descripcion, int Cantidad, float precio, List<String> ingredientes,
+            boolean TieneDescuento) {
+        this.Id = id;
         this.Nombre = nombre;
         this.Descripcion = descripcion;
         this.Cantidad = Cantidad;
         this.Precio = precio;
         this.Ingredientes = ingredientes;
         this.TieneDescuento = TieneDescuento;
+    }
+
+    public int getID() {
+        return this.Id;
     }
 
     public String getNombre() {
@@ -39,11 +46,7 @@ public class Producto {
 
     public int getCantidad() {
         return this.Cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.Cantidad = cantidad;
-    }
+    }   
 
     public float getPrecio() {
         return this.Precio;
@@ -51,6 +54,14 @@ public class Producto {
 
     public List<String> getIngredientes() {
         return this.Ingredientes;
+    }
+
+    public boolean getTieneDescuento() {
+        return TieneDescuento;
+    }
+
+    public void setId(int id) {
+        this.Id = id;
     }
 
     public void setNombre(String nombre) {
@@ -61,6 +72,10 @@ public class Producto {
         this.Descripcion = descripcion;
     }
 
+    public void setCantidad(int cantidad) {
+        this.Cantidad = cantidad;
+    }
+
     public void setPrecio(float precio) {
         this.Precio = precio;
     }
@@ -68,13 +83,8 @@ public class Producto {
     public void setIngredientes(List<String> ingredientes) {
         this.Ingredientes = ingredientes;
     }
-    
-    public boolean TieneDescuento() {
-        return TieneDescuento;
-    }
 
     public void setTieneDescuento(boolean tieneDescuento) {
         TieneDescuento = tieneDescuento;
     }
 }
-
