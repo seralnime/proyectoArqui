@@ -1,12 +1,12 @@
-package main.java.com.RestauranteMexicano;
+package com.RestauranteMexicano;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.com.RestauranteMexicano.modelos.Cliente;
-import main.java.com.RestauranteMexicano.modelos.Pedido;
-import main.java.com.RestauranteMexicano.modelos.Producto;
-import main.java.com.RestauranteMexicano.util.ProxyCliente;
+import com.RestauranteMexicano.modelos.Cliente;
+import com.RestauranteMexicano.modelos.Pedido;
+import com.RestauranteMexicano.modelos.Producto;
+import com.RestauranteMexicano.util.ProxyCliente;
 
 /**
     Santiago Sánchez Cárdenas
@@ -14,10 +14,10 @@ import main.java.com.RestauranteMexicano.util.ProxyCliente;
     Mauricio Andres Valderrama Acosta
  */
 
-public class RestauranteMexicano{
+public class Restaurante{
     public static void main(String[] args){
+        System.out.println("Estamos dentro");
         proxyPrueba();
-        
     }
     public static void proxyPrueba(){
 
