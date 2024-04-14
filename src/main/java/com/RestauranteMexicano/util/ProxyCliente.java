@@ -9,18 +9,15 @@ import java.util.List;
  */
 
 import main.java.com.RestauranteMexicano.modelos.Cliente;
-import main.java.com.RestauranteMexicano.modelos.Inventario;
 import main.java.com.RestauranteMexicano.modelos.Pedido;
 import main.java.com.RestauranteMexicano.modelos.Producto;
 
 public class ProxyCliente implements ClientePedido{
     private Cliente cliente;
-    private Inventario inventario;
     private boolean esPremium;
 
-    public ProxyCliente(Cliente cliente, Inventario inventario){
+    public ProxyCliente(Cliente cliente){
         this.cliente = cliente;
-        this.inventario = inventario;
         this.esPremium = LicenciaValida();
     }
     private boolean LicenciaValida() {
@@ -28,7 +25,8 @@ public class ProxyCliente implements ClientePedido{
         return true; //Hay que cambiar esto cuando se implemente persistencia de datos
     }
     public void TraeInventario(){
-        List<Producto> ProductosDisponibles = this.inventario.getListadoProductos(esPremium);
+        Pedido p = new Pedido();
+        List<Producto> ProductosDisponibles = p.TraeInventario(esPremium);
         if(!ProductosDisponibles.isEmpty()){
             System.out.println("--------------------------------------");
             System.out.println("Listado de productos disponibles:");

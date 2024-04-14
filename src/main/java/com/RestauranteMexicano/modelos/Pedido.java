@@ -1,5 +1,6 @@
 package main.java.com.RestauranteMexicano.modelos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,9 @@ public class Pedido {
         this.productos = productos;
         this.calculaPago(esPremium);
     }
+    public Pedido(){
+
+    }
     public void calculaPago(boolean esPremium){
         float totalP = 0;
         for(Producto producto : this.productos){
@@ -32,7 +36,24 @@ public class Pedido {
         totalP += this.tarifaDomicilio;
         this.setTotal(totalP); 
     }
+    public List<Producto> TraeInventario(boolean esPremium){
+        List<Producto> productos = new ArrayList<Producto>();
 
+        Producto enchiladas = new Producto(1,"Enchiladas", "Deliciosas enchiladas mexicanas", 10, 25000f, 
+                List.of("Tortillas de maíz", "Pollo", "Salsa roja", "Queso", "Crema"), true);
+        Producto tacos = new Producto(2,"Tacos", "Auténticos tacos mexicanos", 15, 18000f, 
+                List.of("Tortillas de maíz", "Carne asada", "Cilantro", "Cebolla", "Salsa verde"), true);
+        Producto limonada = new Producto(3,"Limonada", "Refrescante limonada natural", 20, 4500f, 
+                List.of("Limón", "Agua", "Azúcar"), true);
+
+        productos.add(enchiladas);
+        productos.add(tacos);
+        productos.add(limonada);
+
+        Inventario inventario = new Inventario(productos);
+
+        return inventario.getListadoProductos(esPremium);
+    }
 
 
     public Cliente getCliente() {

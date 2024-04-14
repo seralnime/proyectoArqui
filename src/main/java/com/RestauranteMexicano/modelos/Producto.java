@@ -32,7 +32,7 @@ public class Producto {
         this.TieneDescuento = TieneDescuento;
     }
 
-    public String getID() {
+    public int getID() {
         return this.Id;
     }
 
@@ -46,7 +46,7 @@ public class Producto {
 
     public int getCantidad() {
         return this.Cantidad;
-    }
+    }   
 
     public float getPrecio() {
         return this.Precio;

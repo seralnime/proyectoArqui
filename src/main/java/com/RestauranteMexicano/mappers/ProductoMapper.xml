@@ -2,25 +2,28 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--
+/**
+    Santiago Sánchez Cárdenas
+    Sergio Gabriel Nieto Meneses
+    Mauricio Andres Valderrama Acosta
+ */ -->
   
-<mapper namespace="restaurante.proyectoArqui.src.main.java.com.RestauranteMexicano.mappers.ProductoMapper">
+<mapper namespace="com.RestauranteMexicano.mappers.ProductoMapper">
 
-
-    <!-- Operación para consultar un item por ID -->
     <select id="consultarProducto" parameterType="int" resultMap="ProductoResult">
         SELECT id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento
         FROM Prodcto 
         WHERE id = #{id}
     </select>
 
-    <!-- Operación para consultar todos los items -->
     <select id="consultarProductos" resultMap="ProductoResult">
         SELECT id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento
         FROM Prodcto
     </select>
 <insert id="insertarProducto" parameterType="Producto">
         INSERT INTO Prodcto (id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento)
-        VALUES (#{id}, #{nombre}, #{descripcion}, #{Cantidad}, #{precio}, #{Ingredientes}, #{}, #{TieneDescuento})
+        VALUES (#{id}, #{nombre}, #{descripcion}, #{Cantidad}, #{precio}, #{Ingredientes}, #{TieneDescuento})
 </insert>
 
 <resultMap type='ProductoMapper' id='ProductoResult'>
