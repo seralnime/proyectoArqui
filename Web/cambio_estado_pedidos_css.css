@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #A2CF9C;
+}
+
+.container {
+  text-align: center;
+}
+
+.cuadro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid#406B3A;
+  padding: 20px;
+  background-color: #A2CF9C;
+}
+
+.columna {
+  flex: 1;
+  padding: 0 10px;
+}
+
+#estados div {
+  margin-bottom: 10px;
+}
+
+.sushi {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.entregado {
+  background-color: green;
+}
+
+.proceso {
+  background-color: yellow;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]+label {
+  color: #000000;
+}
+
+input[type="checkbox"]+label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -2px 10px 0 0;
+  vertical-align: middle;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) left top no-repeat;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked+label span {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -19px top no-repeat;
+}
+
+.columna1,
+.columna2,
+.columna3,
+.columna4 {
+  margin-right: 20px;
+  /* Puedes ajustar este valor según el espaciado deseado */
+  padding: 10px;
+  /* Puedes ajustar este valor según el espaciado deseado */
+}
+
+/* Asegúrate de que el ancho total de las columnas no supere el ancho del contenedor para evitar que se desborde horizontalmente */
