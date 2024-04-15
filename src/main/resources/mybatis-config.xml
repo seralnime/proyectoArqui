@@ -3,9 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--<settings>
-        <setting name="logImpl" value="LOG4J"/>        
-    </settings>-->
+    <!--
+ Diseño y arquitectura de software
+ @author
+     Santiago Sánchez Cárdenas - 0000271976
+     Sergio Gabriel Nieto Meneses - 0000246107
+     Mauricio Andres Valderrama Acosta - 0000251802
+
+-->
     <properties resource="config.properties">
     </properties>
 
