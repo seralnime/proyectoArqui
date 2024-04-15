@@ -1,0 +1,11 @@
+com\RestauranteMexicano\util\ClientePedido.class
+com\RestauranteMexicano\JavaMappers\ClienteMapper.class
+com\RestauranteMexicano\modelos\Cliente.class
+com\RestauranteMexicano\Restaurante.class
+com\RestauranteMexicano\modelos\Envio.class
+com\RestauranteMexicano\util\ProxyCliente.class
+com\RestauranteMexicano\JavaMappers\ProductoMapper.class
+com\RestauranteMexicano\modelos\Inventario.class
+com\RestauranteMexicano\JavaMappers\PedidoMapper.class
+com\RestauranteMexicano\modelos\Pedido.class
+com\RestauranteMexicano\modelos\Producto.class
