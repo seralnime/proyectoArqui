@@ -1,9 +1,9 @@
-package main.java.com.RestauranteMexicano.util;
+package com.RestauranteMexicano.util;
 
 import java.util.List;
 
-import main.java.com.RestauranteMexicano.modelos.Pedido;
-import main.java.com.RestauranteMexicano.modelos.Producto;
+import com.RestauranteMexicano.modelos.Pedido;
+import com.RestauranteMexicano.modelos.Producto;
 
 /**
     Santiago Sánchez Cárdenas

@@ -1,4 +1,4 @@
-package main.java.com.RestauranteMexicano.modelos;
+package com.RestauranteMexicano.modelos;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Inventario {
     public List<Producto> getListadoProductos(boolean esPremium) {
         if(esPremium){
             for (Producto producto : this.ListadoProductos){
-                if(producto.TieneDescuento()){
+                if(producto.getTieneDescuento()){
                     float precioNuevo = producto.getPrecio() * 0.9f;
                     producto.setPrecio(precioNuevo);
                 }

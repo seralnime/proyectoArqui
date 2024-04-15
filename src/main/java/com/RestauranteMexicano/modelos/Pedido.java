@@ -1,21 +1,38 @@
-package main.java.com.RestauranteMexicano.modelos;
+package com.RestauranteMexicano.modelos;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.RestauranteMexicano.JavaMappers.ProductoMapper;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
 /**
  * Santiago Sánchez Cárdenas
  * Sergio Gabriel Nieto Meneses
  * Mauricio Andres Valderrama Acosta
  */
+
+
 public class Pedido {
+    private int ID;
     private Cliente cliente;
     private List<Producto> productos;
     private float total;
     private boolean PagoHecho;
     private float tarifaDomicilio;
 
-    public Pedido(Cliente cliente, List<Producto> productos, boolean esPremium) {
-        if (!esPremium) {
+    
+    
+    public Pedido(int ID, Cliente cliente, List<Producto> productos,boolean esPremium) {
+        this.ID = ID;
+        if(!esPremium){
             this.tarifaDomicilio = 3500;
         } else {
             this.tarifaDomicilio = 0;
@@ -24,8 +41,10 @@ public class Pedido {
         this.productos = productos;
         this.calculaPago(esPremium);
     }
+    public Pedido(){
 
-    public void calculaPago(boolean esPremium) {
+    }
+    public void calculaPago(boolean esPremium){
         float totalP = 0;
         for (Producto producto : this.productos) {
             totalP += producto.getPrecio() * producto.getCantidad();
@@ -33,13 +52,33 @@ public class Pedido {
         totalP += this.tarifaDomicilio;
         this.setTotal(totalP);
     }
+    public List<Producto> TraeInventario(boolean esPremium, SqlSessionFactory session){
+        SqlSession sqlss = session.openSession();
+        ProductoMapper pm = sqlss.getMapper(ProductoMapper.class);
+        List<Producto> productos = new ArrayList<Producto>();
 
-    public void stop() {
-        System.out.println("Deteniendo reproducción");
+        Producto enchiladas = new Producto(1,"Enchiladas", "Deliciosas enchiladas mexicanas", 10, 25000f, "Tortillas de maíz, Pollo, Salsa roja, Queso, Crema", true);
+        Producto tacos = new Producto(2,"Tacos", "Auténticos tacos mexicanos", 15, 18000f, "Tortillas de maíz, Carne asada, Cilantro, Cebolla, Salsa verde", true);
+        Producto limonada = new Producto(3,"Limonada", "Refrescante limonada natural", 20, 4500f, "Limón, Agua, Azúcar", true);
+
+        productos.add(enchiladas);
+        productos.add(tacos);
+        productos.add(limonada);
+
+        Inventario inventario = new Inventario(productos);
+
+        return inventario.getListadoProductos(esPremium);
+    }
+
+    public int getID() {
+        return ID;
+    }
+    public void setID(int iD) {
+        ID = iD;
     }
 
     public Cliente getCliente() {
-        return cliente;
+        return this.cliente;
     }
 
     public void setCliente(Cliente cliente) {
@@ -47,7 +86,7 @@ public class Pedido {
     }
 
     public List<Producto> getProductos() {
-        return productos;
+        return this.productos;
     }
 
     public void setProductos(List<Producto> productos) {
@@ -55,7 +94,7 @@ public class Pedido {
     }
 
     public float getTotal() {
-        return total;
+        return this.total;
     }
 
     public void setTotal(float total) {
@@ -71,11 +110,11 @@ public class Pedido {
     }
 
     public boolean isPagoHecho() {
-        return PagoHecho;
+        return this.PagoHecho;
     }
 
     public void setPagoHecho(boolean pagoHecho) {
-        PagoHecho = pagoHecho;
+        this.PagoHecho = pagoHecho;
     }
 
 }

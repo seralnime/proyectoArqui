@@ -1,4 +1,4 @@
-package src.main.java.com.RestauranteMexicano.adaptor;
+package com.RestauranteMexicano.adaptor;
 
 public interface app {
 
