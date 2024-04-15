@@ -2,12 +2,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <!--
-/**
-    Santiago Sánchez Cárdenas
-    Sergio Gabriel Nieto Meneses
-    Mauricio Andres Valderrama Acosta
- */ -->
+ <!--
+ Diseño y arquitectura de software
+ @author
+     Santiago Sánchez Cárdenas - 0000271976
+     Sergio Gabriel Nieto Meneses - 0000246107
+     Mauricio Andres Valderrama Acosta - 0000251802
+
+-->
   
 <mapper namespace="com.RestauranteMexicano.JavaMappers.PedidoMapper">
 
