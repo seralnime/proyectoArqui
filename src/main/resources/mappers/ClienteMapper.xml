@@ -3,11 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!--
-/**
-    Santiago Sánchez Cárdenas
-    Sergio Gabriel Nieto Meneses
-    Mauricio Andres Valderrama Acosta
- */ -->
+    Diseño y arquitectura de software
+    @author
+        Santiago Sánchez Cárdenas - 0000271976
+        Sergio Gabriel Nieto Meneses - 0000246107
+        Mauricio Andres Valderrama Acosta - 0000251802
+
+ -->
   
 <mapper namespace="com.RestauranteMexicano.JavaMappers.ClienteMapper">
 
@@ -15,23 +17,25 @@
         SELECT nombre, ID, Licencia, Direccion
         FROM T_CLIENTES 
         WHERE id = #{id}
-    </select>
+    </select>   
 
     <select id="consultarClientes" resultMap="ClienteResult">
         SELECT nombre, ID, Licencia, Direccion
         FROM T_CLIENTES 
     </select>
-<insert id="insertarProducto" parameterType="Producto">
+
+    <insert id="insertarCliente" parameterType="Cliente">
         INSERT INTO T_CLIENTES (nombre, ID, Licencia, Direccion)
         VALUES (#{nombre}, #{id}, #{Licencia}, #{Direccion})
-</insert>
+    </insert>
 
-<resultMap type='Cliente' id='ClienteResult'>
-    <id property='id' column='id'/>
-    <result property='nombre' column='nombre'/>
-    <result property='Licencia' column='Licencia'/>   
-    <result property='Direccion' column='Direccion'/>  
-</resultMap>
+
+    <resultMap type='Cliente' id='ClienteResult'>
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <result property='Licencia' column='Licencia'/>   
+        <result property='Direccion' column='Direccion'/>  
+    </resultMap>
     
     
 </mapper>

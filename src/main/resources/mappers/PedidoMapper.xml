@@ -8,7 +8,6 @@
      Santiago Sánchez Cárdenas - 0000271976
      Sergio Gabriel Nieto Meneses - 0000246107
      Mauricio Andres Valderrama Acosta - 0000251802
-
 -->
   
 <mapper namespace="com.RestauranteMexicano.JavaMappers.PedidoMapper">
@@ -25,13 +24,20 @@
         INSERT INTO T_PEDIDOS (ClienteID, total, PagoHecho, tarifaDomicilio) 
         VALUES (#{cliente.ID}, #{total}, #{pagoHecho}, #{tarifaDomicilio})
     </insert>
-
+    
     <resultMap type='Pedido' id='PedidoResult'>
         <id property='ID' column='ID'/>
-        <result property='cliente' column='ClienteID' javaType='Cliente' select='com.RestauranteMexicano.JavaMappers.ClienteMapper.consultarCliente'/>
-        <collection property='productos' ofType='Producto' select='com.RestauranteMexicano.JavaMappers.ProductoMapper.consultarProductosPorPedido'/>
         <result property='total' column='total'/>
         <result property='PagoHecho' column='PagoHecho'/>
         <result property='tarifaDomicilio' column='tarifaDomicilio'/>
+        <association property='cliente' column='ClienteID' select='com.RestauranteMexicano.JavaMappers.ClienteMapper.consultarCliente'/>
+        <collection property='productos' column='' ofType='Producto' select ='selectProductos'></collection>
     </resultMap>
+    
+    <select id='selectProductos' resultType='Producto'>
+        SELECT p.*
+        FROM T_PRODUCTOS p
+        INNER JOIN T_PEDIDO_PRODUCTO pp ON p.Id = pp.ProductoID
+        WHERE pp.PedidoID = #{ID}
+    </select>
 </mapper>
