@@ -21,4 +21,5 @@ public interface ClienteMapper {
 
     public void insertarCliente(Cliente cli);
 
+    public boolean validaLicencia(String Licencia);
 }

@@ -1,6 +1,5 @@
 package com.RestauranteMexicano.modelos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,10 +7,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
-import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
 
 /**
@@ -25,17 +20,13 @@ import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
 
 public class Pedido {
-    private int ID;
     private Cliente cliente;
     private List<Producto> productos;
     private float total;
     private boolean PagoHecho;
     private float tarifaDomicilio;
 
-    
-    
-    public Pedido(int ID, Cliente cliente, List<Producto> productos,boolean esPremium) {
-        this.ID = ID;
+    public Pedido(Cliente cliente, List<Producto> productos,boolean esPremium) {
         if(!esPremium){
             this.tarifaDomicilio = 3500;
         } else {
@@ -45,16 +36,8 @@ public class Pedido {
         this.productos = productos;
         this.calculaPago(esPremium);
     }
-
-    public float getTarifaDomicilio() {
-        return tarifaDomicilio;
-    }
-    public void setTarifaDomicilio(float tarifaDomicilio) {
-        this.tarifaDomicilio = tarifaDomicilio;
-    }
-    public Pedido(){
-
-    }
+    public Pedido(){}
+    
     public void calculaPago(boolean esPremium){
         float totalP = 0;
         for (Producto producto : this.productos) {
@@ -71,13 +54,12 @@ public class Pedido {
         return inventario.getListadoProductos(esPremium);
     }
 
-    public int getID() {
-        return ID;
+    public float getTarifaDomicilio() {
+        return tarifaDomicilio;
     }
-    public void setID(int iD) {
-        ID = iD;
+    public void setTarifaDomicilio(float tarifaDomicilio) {
+        this.tarifaDomicilio = tarifaDomicilio;
     }
-
     public Cliente getCliente() {
         return this.cliente;
     }

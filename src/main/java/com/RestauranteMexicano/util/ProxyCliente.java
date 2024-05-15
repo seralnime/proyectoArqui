@@ -40,15 +40,16 @@ public class ProxyCliente implements ClientePedido{
         return sqlSessionFactory;
     }
     
-
     public ProxyCliente(Cliente cliente){
         this.cliente = cliente;
         this.esPremium = LicenciaValida();
     }
+
     private boolean LicenciaValida() {
-       // if(cliente.getLicencia() in Licencias)
-        return true; //Hay que cambiar esto cuando se implemente persistencia de datos
+        LicenciaManager lm = new LicenciaManager(this.cliente.getLicencia());
+        return lm.ValidaLicencia(); 
     }
+    
     public void TraeInventario(){
         SqlSessionFactory session = getSqlSessionFactory();
         Pedido p = new Pedido();
@@ -68,7 +69,7 @@ public class ProxyCliente implements ClientePedido{
     }
     @Override
     public Pedido HacePedido(List<Producto> productos) {
-        Pedido pedido = new Pedido(1,cliente, productos, esPremium);//con la persistencia se elimina el id y se deja autoincrement
+        Pedido pedido = new Pedido(cliente, productos, esPremium);
         return pedido;
     }
 }
