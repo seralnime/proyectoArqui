@@ -1,6 +1,5 @@
 package com.RestauranteMexicano.modelos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,30 +7,26 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.RestauranteMexicano.JavaMappers.ProductoMapper;
 
 /**
- * Santiago Sánchez Cárdenas
- * Sergio Gabriel Nieto Meneses
- * Mauricio Andres Valderrama Acosta
+    Diseño y arquitectura de software
+    @author
+        Santiago Sánchez Cárdenas - 0000271976
+        Sergio Gabriel Nieto Meneses - 0000246107
+        Mauricio Andres Valderrama Acosta - 0000251802
+
  */
 
 
 public class Pedido {
-    private int ID;
     private Cliente cliente;
     private List<Producto> productos;
     private float total;
     private boolean PagoHecho;
     private float tarifaDomicilio;
 
-    
-    
-    public Pedido(int ID, Cliente cliente, List<Producto> productos,boolean esPremium) {
-        this.ID = ID;
+    public Pedido(Cliente cliente, List<Producto> productos,boolean esPremium) {
         if(!esPremium){
             this.tarifaDomicilio = 3500;
         } else {
@@ -41,9 +36,8 @@ public class Pedido {
         this.productos = productos;
         this.calculaPago(esPremium);
     }
-    public Pedido(){
-
-    }
+    public Pedido(){}
+    
     public void calculaPago(boolean esPremium){
         float totalP = 0;
         for (Producto producto : this.productos) {
@@ -55,28 +49,17 @@ public class Pedido {
     public List<Producto> TraeInventario(boolean esPremium, SqlSessionFactory session){
         SqlSession sqlss = session.openSession();
         ProductoMapper pm = sqlss.getMapper(ProductoMapper.class);
-        List<Producto> productos = new ArrayList<Producto>();
-
-        Producto enchiladas = new Producto(1,"Enchiladas", "Deliciosas enchiladas mexicanas", 10, 25000f, "Tortillas de maíz, Pollo, Salsa roja, Queso, Crema", true);
-        Producto tacos = new Producto(2,"Tacos", "Auténticos tacos mexicanos", 15, 18000f, "Tortillas de maíz, Carne asada, Cilantro, Cebolla, Salsa verde", true);
-        Producto limonada = new Producto(3,"Limonada", "Refrescante limonada natural", 20, 4500f, "Limón, Agua, Azúcar", true);
-
-        productos.add(enchiladas);
-        productos.add(tacos);
-        productos.add(limonada);
-
+        List<Producto> productos = pm.consultarProductos();
         Inventario inventario = new Inventario(productos);
-
         return inventario.getListadoProductos(esPremium);
     }
 
-    public int getID() {
-        return ID;
+    public float getTarifaDomicilio() {
+        return tarifaDomicilio;
     }
-    public void setID(int iD) {
-        ID = iD;
+    public void setTarifaDomicilio(float tarifaDomicilio) {
+        this.tarifaDomicilio = tarifaDomicilio;
     }
-
     public Cliente getCliente() {
         return this.cliente;
     }

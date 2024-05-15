@@ -20,11 +20,11 @@ public class adaptadordeapp<pedido> implements app {
     }
 
     public void orden(Cliente cliente, List<Producto> productos, boolean esPremium) {
-        this.app.pedido(cliente, productos, esPremium);
+        //this.app.pedido(cliente, productos, esPremium);
     }
 
     public void stop() {
-        this.app.stop();
+        //this.app.stop();
     }
 
 }

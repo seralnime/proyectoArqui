@@ -15,13 +15,13 @@
 
     <select id="consultarProducto" parameterType="int" resultMap="ProductoResult">
         SELECT id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento
-        FROM T_PRODUCTO 
+        FROM T_PRODUCTOS 
         WHERE id = #{id}
     </select>
 
     <select id="consultarProductos" resultMap="ProductoResult">
         SELECT id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento
-        FROM T_PRODUCTO
+        FROM T_PRODUCTOS
     </select>
 
     <select id="consultarProductosPorPedido" parameterType="int" resultMap="ProductoResult">
@@ -31,7 +31,7 @@
     </select>
     
     <insert id="insertarProducto" parameterType="Producto">
-            INSERT INTO T_PRODUCTO (id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento)
+            INSERT INTO T_PRODUCTOS (id, nombre, descripcion, Cantidad, precio, Ingredientes, TieneDescuento)
             VALUES (#{id}, #{nombre}, #{descripcion}, #{Cantidad}, #{precio}, #{Ingredientes}, #{TieneDescuento})
     </insert>
 
