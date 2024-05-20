@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Columnas con Entrada y Botón</title>
+  <link rel="stylesheet" href="consulta_estado_css.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-container">
+      <input type="text" placeholder="Cédula" class="input-text">
+      <button class="btn" onclick="consultarEstado()">Consultar</button>
+    </div>
+    <div class="column">
+      <h2>Cédula</h2>
+      <div id="cedula-container"></div>
+    </div>
+
+    <div class="column">
+      <h2>Estado</h2>
+      <div id="estado-container"></div>
+    </div>
+  </div>
+  <script src="consulta_estado_jvs.js"></script>
+</body>
+
+</html>
